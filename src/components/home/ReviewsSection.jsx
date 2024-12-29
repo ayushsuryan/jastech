@@ -129,7 +129,7 @@ const ReviewsSection = () => {
       <div className="py-20 bg-primary">
         <div className="container mx-auto px-4">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            What Our Clients Say
+           Testimonials
           </h1>
           <p className="text-xl text-blue-100">
             Success stories from organizations we've helped transform

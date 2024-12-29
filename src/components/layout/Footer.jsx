@@ -6,22 +6,14 @@ const Footer = () => {
 
   const footerSections = [
     {
-      title: "Services",
-      links: [
-        { name: "Software Development", href: "/services/software" },
-        { name: "Cloud Solutions", href: "/services/cloud" },
-        { name: "IT Consulting", href: "/services/consulting" },
-        { name: "AI & Machine Learning", href: "/services/ai-ml" },
-        { name: "Cybersecurity", href: "/services/security" },
-      ],
-    },
-    {
       title: "Company",
       links: [
+        { name: "Home", href: "/" },
+        { name: "Our Services", href: "/services" },
         { name: "About Us", href: "/about" },
-        { name: "Case Studies", href: "/case-studies" },
-        { name: "Careers", href: "/careers" },
-        { name: "Blog", href: "/blog" },
+        { name: "Stories", href: "/success-stories" },
+        // { name: "Careers", href: "/careers" },
+        // { name: "Blog", href: "/blog" },
         { name: "Contact", href: "/contact" },
       ],
     },
@@ -42,7 +34,7 @@ const Footer = () => {
           {/* Company Info */}
           <div>
             <img
-              src="/src/assets/logo-white.png"
+              src="/src/assets/logo-inverse.png"
               alt="JAS Technologies"
               className="h-8 mb-4"
             />

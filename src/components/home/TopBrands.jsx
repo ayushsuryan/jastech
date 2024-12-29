@@ -18,9 +18,9 @@ const TopBrands = () => {
           <marquee
             behavior="scroll"
             direction="left"
-            scrollamount="10" // Speed of the marquee
-            scrolldelay="50" // Delay between scrolls
-            loop="infinite" // Loop the marquee indefinitely
+            scrollamount="10"
+            scrolldelay="50"
+            loop="infinite"
           >
             <div className="flex">
               {/* Use flex row to align items horizontally */}

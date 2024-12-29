@@ -1,5 +1,5 @@
 import React from "react";
-
+import ContactForm from "../components/home/ContactForm";
 const ServicesPage = () => {
   const services = [
     {
@@ -114,7 +114,7 @@ const ServicesPage = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="py-20 bg-blue-600">
+      <div className="py-20 bg-primary">
         <div className="container mx-auto px-4">
           <h1 className="text-4xl font-bold text-white mb-4">Our Services</h1>
           <p className="text-xl text-blue-100">
@@ -130,7 +130,7 @@ const ServicesPage = () => {
               key={index}
               className="bg-white rounded-lg shadow-lg p-8 hover:shadow-xl transition-shadow duration-300"
             >
-              <h3 className="text-2xl font-bold mb-4 text-blue-600">
+              <h3 className="text-2xl font-bold mb-4 text-primary">
                 {service.title}
               </h3>
               <p className="text-gray-600 mb-6">{service.description}</p>
@@ -158,6 +158,7 @@ const ServicesPage = () => {
           ))}
         </div>
       </div>
+      <ContactForm></ContactForm>
     </div>
   );
 };

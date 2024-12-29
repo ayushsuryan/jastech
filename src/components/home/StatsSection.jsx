@@ -1,4 +1,4 @@
-// components/home/StatsSection.jsx
+
 import React from "react";
 
 const StatsSection = () => {
@@ -40,7 +40,7 @@ const StatsSection = () => {
           {stats.map((stat, index) => (
             <div
               key={index}
-              className="text-center p-6 rounded-lg bg-primary hover:bg-blue-700/40 transition-all duration-300"
+              className="text-center p-6 rounded-lg bg-primary hover:bg-blue-900 transition-all duration-300"
             >
               <div className="text-4xl font-bold mb-2">{stat.number}</div>
               <div className="text-xl font-semibold mb-2">{stat.label}</div>

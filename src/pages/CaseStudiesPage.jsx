@@ -1,31 +1,73 @@
 import React from "react";
-
+import ContactForm from '../components/home/ContactForm'
 const CaseStudiesPage = () => {
   const caseStudies = [
     {
-      title: "Enterprise Cloud Migration",
-      client: "Global Retail Corp",
-      industry: "Retail",
-      challenge: "Legacy infrastructure limiting scalability",
-      solution: "Comprehensive cloud migration and optimization",
+      title: "Healthcare Data Platform Modernization",
+      client: "MedTech Solutions Group",
+      industry: "Healthcare",
+      challenge: "Legacy data infrastructure causing delays in patient care and analytics",
+      solution: "Implemented modern data lake architecture with real-time analytics capabilities",
       results: [
-        "40% reduction in operational costs",
-        "99.9% uptime achieved",
-        "Improved scalability and performance",
+        "60% faster patient data retrieval",
+        "Reduced data storage costs by 45%",
+        "Real-time analytics implementation",
       ],
+      slug: "medtech-data-platform"
     },
     {
-      title: "Digital Transformation Initiative",
-      client: "FinTech Solutions",
+      title: "AI-Powered Financial Trading Platform",
+      client: "Global Investment Corp",
       industry: "Financial Services",
-      challenge: "Outdated systems and manual processes",
-      solution: "Custom software development and process automation",
+      challenge: "Manual trading processes limiting market responsiveness",
+      solution: "Custom AI/ML platform for automated trading and risk analysis",
       results: [
-        "85% process automation achieved",
-        "50% reduction in processing time",
-        "Enhanced customer satisfaction",
+        "90% reduction in trading decision time",
+        "35% improvement in trading accuracy",
+        "Real-time risk assessment capability",
       ],
+      slug: "ai-trading-platform"
     },
+    {
+      title: "E-commerce Platform Scalability Project",
+      client: "RetailTech Solutions",
+      industry: "Retail Technology",
+      challenge: "Platform performance issues during high-traffic periods",
+      solution: "Microservices architecture implementation with auto-scaling",
+      results: [
+        "100x increase in concurrent users",
+        "99.99% uptime during peak sales",
+        "70% reduction in server costs",
+      ],
+      slug: "retailtech-scalability"
+    }
+  ,
+    {
+      title: "Cross-Platform Delivery Fleet Management App",
+      client: "FastTrack Logistics",
+      industry: "Transportation & Logistics",
+      challenge: "Inefficient delivery tracking and driver management across different platforms",
+      solution: "React Native mobile app with real-time GPS tracking and route optimization",
+      results: [
+        "40% improvement in delivery efficiency",
+        "Real-time tracking for 500+ drivers",
+        "85% reduction in delivery delays"
+      ],
+      slug: "fasttrack-fleet-app"
+    },
+    {
+      title: "Enterprise Field Service Mobile Solution",
+      client: "TechServ Solutions",
+      industry: "Field Services",
+      challenge: "Paper-based field service operations causing delays and data errors",
+      solution: "Flutter-based mobile app with offline capability and digital forms",
+      results: [
+        "75% reduction in paperwork processing",
+        "98% faster service report generation",
+        "30% increase in daily service capacity"
+      ],
+      slug: "techserv-field-app"
+    }
   ];
 
   return (
@@ -33,7 +75,7 @@ const CaseStudiesPage = () => {
       <div className="py-20 bg-primary">
         <div className="container mx-auto px-4">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Our Services
+            Developments
           </h1>
           <p className="text-xl text-blue-100">
             Enterprise IT solutions powered by cutting-edge technology
@@ -94,6 +136,7 @@ const CaseStudiesPage = () => {
           ))}
         </div>
       </div>
+      <ContactForm></ContactForm>
     </div>
   );
 };

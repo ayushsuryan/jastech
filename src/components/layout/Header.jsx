@@ -6,12 +6,17 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navLinks = [
-    { name: "Services", href: "/services" },
+    { name: "Home", href: "/" },
     { name: "About", href: "/about" },
-    { name: "Case Studies", href: "/case-studies" },
+    { name: "Services", href: "/services" },
+    { name: "Stories", href: "/success-stories" },
     { name: "Blog", href: "/blog" },
     { name: "Contact", href: "/contact" },
   ];
+
+  const handleLinkClick = () => {
+    setIsMenuOpen(false);
+  };
 
   return (
     <header className="bg-white shadow-md">
@@ -20,9 +25,9 @@ const Header = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center">
             <img
-              src="/src/assets/logo.svg"
+              src="/src/assets/logo.png"
               alt="JAS Technologies"
-              className="h-12"
+              className="h-12 transition-transform duration-300 hover:scale-105"
             />
           </Link>
 
@@ -32,14 +37,17 @@ const Header = () => {
               <Link
                 key={link.name}
                 to={link.href}
-                className="text-gray-700 hover:text-blue-600 font-medium"
+                className="text-gray-700 hover:text-blue-600 font-medium relative group"
               >
-                {link.name}
+                <span className="relative">
+                  {link.name}
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+                </span>
               </Link>
             ))}
             <Link
-              to="/get-started"
-              className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition-colors"
+              to="/contact"
+              className="bg-primary text-white px-6 py-3 rounded-md hover:bg-primary transition-all duration-300 hover:shadow-lg transform hover:-translate-y-0.5"
             >
               Get Started
             </Link>
@@ -47,11 +55,12 @@ const Header = () => {
 
           {/* Mobile menu button */}
           <button
-            className="md:hidden p-2"
+            className="md:hidden p-2 transition-transform duration-200 hover:scale-110"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
           >
             {isMenuOpen ? (
-              <XMarkIcon className="h-6 w-6" />
+              <XMarkIcon className="h-6 w-6 transition-transform duration-200 rotate-90" />
             ) : (
               <Bars3Icon className="h-6 w-6" />
             )}
@@ -59,25 +68,31 @@ const Header = () => {
         </div>
 
         {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="md:hidden py-4">
+        <div
+          className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+            isMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+          }`}
+        >
+          <div className="py-4 space-y-2">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 to={link.href}
-                className="block py-2 text-gray-700 hover:text-blue-600"
+                onClick={handleLinkClick}
+                className="block py-2 text-gray-700 hover:text-blue-600 transition-colors duration-200 hover:pl-4"
               >
                 {link.name}
               </Link>
             ))}
             <Link
-              to="/get-started"
-              className="block mt-4 bg-blue-600 text-white px-6 py-2 rounded-md text-center"
+              to="/contact"
+              onClick={handleLinkClick}
+              className="block mt-4 bg-secondary text-white px-6 py-2 rounded-md text-center transition-all duration-300 hover:bg-opacity-90 hover:shadow-md"
             >
               Get Started
             </Link>
           </div>
-        )}
+        </div>
       </div>
     </header>
   );

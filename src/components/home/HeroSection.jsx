@@ -18,16 +18,16 @@ const HeroSection = () => {
               <Link
                 to="/contact"
                 className="bg-white text-black px-8 py-4 rounded-lg text-lg font-semibold 
-                hover:bg-blue-50 transition duration-300 text-center"
+                hover:bg-secondary transition duration-300 text-center"
               >
                 Get Started
               </Link>
               <Link
-                to="/case-studies"
+                to="/success-stories"
                 className="border-2 border-white text-white px-8 py-4 rounded-lg text-lg 
                 font-semibold hover:bg-white hover:text-black transition duration-300 text-center"
               >
-                View Case Studies
+                View Stories
               </Link>
             </div>
             {/* Trust Indicators */}

@@ -1,4 +1,3 @@
-// pages/BlogPage.jsx
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
@@ -8,68 +7,62 @@ import {
   MagnifyingGlassIcon,
 } from "@heroicons/react/24/outline";
 
-// Sample blog data - in a real app, this would come from an API
 const blogData = [
   {
     id: 1,
-    title: "10 Cloud Computing Trends to Watch in 2024",
-    excerpt:
-      "Discover the latest trends in cloud computing that are shaping the future of enterprise IT infrastructure. From edge computing to serverless architectures, learn what's driving innovation.",
-    category: "Cloud Computing",
-    author: "John Smith",
-    date: "2024-03-15",
-    readTime: "5 min",
-    image: "/images/blog/cloud-computing.jpg",
-    tags: ["Cloud", "Technology", "Innovation"],
+    title: "NPM vs NPX: Understanding the Key Differences",
+    excerpt: "Dive deep into the distinctions between npm and npx. Learn when to use each tool, their specific use cases, and how they complement each other in modern JavaScript development workflows.",
+    category: "JavaScript Tools",
+    author: "Sarah Mitchell",
+    date: "2024-03-25",
+    readTime: "6 min",
+    image: "/images/blog/npm-npx.jpg",
+    tags: ["npm", "npx", "JavaScript", "Node.js"],
   },
   {
     id: 2,
-    title: "The Ultimate Guide to Cybersecurity Best Practices",
-    excerpt:
-      "Learn essential cybersecurity practices to protect your business from emerging digital threats. A comprehensive guide to securing your digital assets.",
-    category: "Cybersecurity",
-    author: "Sarah Johnson",
-    date: "2024-03-12",
+    title: "TypeScript 5.4: Essential New Features for Developers",
+    excerpt: "Explore the latest features in TypeScript 5.4, including improved type inference, new utility types, and performance enhancements. Practical examples included.",
+    category: "TypeScript",
+    author: "James Lee",
+    date: "2024-03-22",
     readTime: "8 min",
-    image: "/images/blog/cybersecurity.jpg",
-    tags: ["Security", "Cybersecurity", "Best Practices"],
+    image: "/images/blog/typescript.jpg",
+    tags: ["TypeScript", "JavaScript", "Development"],
   },
   {
     id: 3,
-    title: "Implementing AI in Business Operations",
-    excerpt:
-      "A comprehensive guide on integrating artificial intelligence into your business processes. Learn how AI can transform your operations.",
-    category: "Artificial Intelligence",
-    author: "Mike Anderson",
-    date: "2024-03-10",
-    readTime: "6 min",
-    image: "/images/blog/ai-business.jpg",
-    tags: ["AI", "Business", "Digital Transformation"],
+    title: "Git Rebase vs Merge: Making the Right Choice",
+    excerpt: "A practical guide to understanding when to use git rebase versus merge. Learn the implications of each approach and best practices for maintaining a clean git history.",
+    category: "Version Control",
+    author: "Alex Kumar",
+    date: "2024-03-20",
+    readTime: "7 min",
+    image: "/images/blog/git-workflow.jpg",
+    tags: ["Git", "DevOps", "Version Control"],
   },
   {
     id: 4,
-    title: "5G Technology and Its Impact on IoT",
-    excerpt:
-      "Explore how 5G technology is revolutionizing the Internet of Things and creating new possibilities for connected devices.",
-    category: "Technology",
-    author: "Emily Chen",
-    date: "2024-03-08",
-    readTime: "7 min",
-    image: "/images/blog/5g-iot.jpg",
-    tags: ["5G", "IoT", "Technology"],
+    title: "Understanding package.json Scripts for Productivity",
+    excerpt: "Master the art of npm scripts in package.json. From basic commands to complex automated workflows, learn how to boost your development productivity.",
+    category: "JavaScript Tools",
+    author: "Maria Garcia",
+    date: "2024-03-18",
+    readTime: "5 min",
+    image: "/images/blog/package-json.jpg",
+    tags: ["npm", "Node.js", "Development"],
   },
   {
     id: 5,
-    title: "The Rise of Edge Computing",
-    excerpt:
-      "Understanding edge computing and its growing importance in modern IT infrastructure. Learn about use cases and implementation strategies.",
-    category: "Cloud Computing",
-    author: "David Wilson",
-    date: "2024-03-05",
+    title: "ESLint vs Prettier: Configuring the Perfect Setup",
+    excerpt: "Learn how to effectively combine ESLint and Prettier in your development workflow. Best practices for configuration and resolving common conflicts.",
+    category: "Development Tools",
+    author: "Chris Wilson",
+    date: "2024-03-15",
     readTime: "6 min",
-    image: "/images/blog/edge-computing.jpg",
-    tags: ["Edge Computing", "Cloud", "Infrastructure"],
-  },
+    image: "/images/blog/eslint-prettier.jpg",
+    tags: ["ESLint", "Prettier", "Code Quality"],
+  }
 ];
 
 const BlogPage = () => {
@@ -78,10 +71,8 @@ const BlogPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 6;
 
-  // Get unique categories from blog data
   const categories = ["All", ...new Set(blogData.map((post) => post.category))];
 
-  // Filter posts based on search term and category
   const filteredPosts = blogData.filter((post) => {
     const matchesSearch =
       post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -91,7 +82,6 @@ const BlogPage = () => {
     return matchesSearch && matchesCategory;
   });
 
-  // Get current posts for pagination
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = filteredPosts.slice(indexOfFirstPost, indexOfLastPost);
@@ -108,7 +98,7 @@ const BlogPage = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <div className="bg-blue-600 py-20">
+      <div className="bg-primary py-20">
         <div className="container mx-auto px-4">
           <h1 className="text-4xl font-bold text-white mb-4">Our Blog</h1>
           <p className="text-xl text-blue-100">
@@ -141,7 +131,7 @@ const BlogPage = () => {
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-colors
                   ${
                     selectedCategory === category
-                      ? "bg-blue-600 text-white"
+                      ? "bg-primary text-white"
                       : "bg-white text-gray-600 hover:bg-gray-100"
                   }`}
               >
@@ -231,7 +221,7 @@ const BlogPage = () => {
                 key={index + 1}
                 onClick={() => setCurrentPage(index + 1)}
                 className={`px-4 py-2 border rounded-md hover:bg-gray-100
-                  ${currentPage === index + 1 ? "bg-blue-600 text-white" : ""}`}
+                  ${currentPage === index + 1 ? "bg-primar text-white" : ""}`}
               >
                 {index + 1}
               </button>

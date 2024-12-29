@@ -49,7 +49,7 @@ const CaseStudies = () => {
       <div className="py-20 bg-primary">
         <div className="container mx-auto px-4">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Recent Projects
+            Projects
           </h1>
           <p className="text-xl text-blue-100">
             Enterprise IT solutions powered by cutting-edge technology
@@ -61,7 +61,7 @@ const CaseStudies = () => {
           {cases.map((study, index) => (
             <Link
               key={index}
-              to={`/case-studies/${study.slug}`}
+              to={`/success-stories/${study.slug}`}
               className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow"
             >
               <div className="aspect-w-16 aspect-h-9">
@@ -106,11 +106,11 @@ const CaseStudies = () => {
 
         <div className="text-center mt-12">
           <Link
-            to="/case-studies"
+            to="/success-stories"
             className="inline-flex items-center px-6 py-3 border border-blue-600 
-            text-base font-medium rounded-md text-blue-600 hover:bg-blue-50"
+            text-base font-medium rounded-md text-blue-600 hover:bg-secondary"
           >
-            View All Case Studies
+            View All Stories
             <svg
               className="ml-2 -mr-1 w-4 h-4"
               fill="currentColor"
