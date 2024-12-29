@@ -5,6 +5,7 @@ import {
   PhoneIcon,
   EnvelopeIcon,
   CalendarIcon,
+  IdentificationIcon,
 } from "@heroicons/react/24/outline";
 
 const Footer = () => {
@@ -69,7 +70,7 @@ const Footer = () => {
     <footer className="bg-gray-900 text-white">
       {/* Main Footer Content */}
       <div className="container mx-auto px-4 pt-10 pb-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           {/* Company Info */}
           <div className="lg:col-span-2">
             <img
@@ -79,19 +80,10 @@ const Footer = () => {
             />
             <p className="text-gray-400 mb-4">
               Transforming businesses through innovative technology solutions.
-              We help enterprises leverage cutting-edge technology to stay ahead
-              in the digital age.
             </p>
 
             {/* Contact Information */}
             <div className="space-y-3 mt-6">
-              <div className="flex items-center space-x-3">
-                <MapPinIcon className="h-5 w-5 text-blue-400" />
-                <span className="text-gray-400">
-                  123 Tech Street, Silicon Valley, CA 94025
-                </span>
-              </div>
-
               <a
                 href="tel:+15551234567"
                 className="flex items-center space-x-3 text-gray-400 hover:text-white transition-colors"
@@ -117,6 +109,15 @@ const Footer = () => {
                 <CalendarIcon className="h-5 w-5 text-blue-400" />
                 <span>Schedule a Meeting</span>
               </a>
+
+              <div className="flex  space-x-3 pt-2">
+                <IdentificationIcon className="h-5 w-5 text-blue-400" />
+                <div className="text-gray-400">
+                  <div>GSTIN: 29AABCU9603R1ZJ</div>
+                  <div>CIN: U72200KA2019PTC123456</div>
+                  <div>PAN: AABCU9603R</div>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -138,24 +139,6 @@ const Footer = () => {
               </ul>
             </div>
           ))}
-
-          {/* Newsletter Signup */}
-          <div className="lg:col-span-1">
-            <h3 className="text-lg font-semibold mb-4">Stay Updated</h3>
-            <form className="space-y-2">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-              <button
-                type="submit"
-                className="w-full px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
-              >
-                Subscribe
-              </button>
-            </form>
-          </div>
         </div>
 
         {/* Bottom Bar */}
