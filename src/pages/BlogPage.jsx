@@ -1,3 +1,4 @@
+// blog page and sections are not being used
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
@@ -11,7 +12,8 @@ const blogData = [
   {
     id: 1,
     title: "NPM vs NPX: Understanding the Key Differences",
-    excerpt: "Dive deep into the distinctions between npm and npx. Learn when to use each tool, their specific use cases, and how they complement each other in modern JavaScript development workflows.",
+    excerpt:
+      "Dive deep into the distinctions between npm and npx. Learn when to use each tool, their specific use cases, and how they complement each other in modern JavaScript development workflows.",
     category: "JavaScript Tools",
     author: "Sarah Mitchell",
     date: "2024-03-25",
@@ -22,7 +24,8 @@ const blogData = [
   {
     id: 2,
     title: "TypeScript 5.4: Essential New Features for Developers",
-    excerpt: "Explore the latest features in TypeScript 5.4, including improved type inference, new utility types, and performance enhancements. Practical examples included.",
+    excerpt:
+      "Explore the latest features in TypeScript 5.4, including improved type inference, new utility types, and performance enhancements. Practical examples included.",
     category: "TypeScript",
     author: "James Lee",
     date: "2024-03-22",
@@ -33,7 +36,8 @@ const blogData = [
   {
     id: 3,
     title: "Git Rebase vs Merge: Making the Right Choice",
-    excerpt: "A practical guide to understanding when to use git rebase versus merge. Learn the implications of each approach and best practices for maintaining a clean git history.",
+    excerpt:
+      "A practical guide to understanding when to use git rebase versus merge. Learn the implications of each approach and best practices for maintaining a clean git history.",
     category: "Version Control",
     author: "Alex Kumar",
     date: "2024-03-20",
@@ -44,7 +48,8 @@ const blogData = [
   {
     id: 4,
     title: "Understanding package.json Scripts for Productivity",
-    excerpt: "Master the art of npm scripts in package.json. From basic commands to complex automated workflows, learn how to boost your development productivity.",
+    excerpt:
+      "Master the art of npm scripts in package.json. From basic commands to complex automated workflows, learn how to boost your development productivity.",
     category: "JavaScript Tools",
     author: "Maria Garcia",
     date: "2024-03-18",
@@ -55,14 +60,15 @@ const blogData = [
   {
     id: 5,
     title: "ESLint vs Prettier: Configuring the Perfect Setup",
-    excerpt: "Learn how to effectively combine ESLint and Prettier in your development workflow. Best practices for configuration and resolving common conflicts.",
+    excerpt:
+      "Learn how to effectively combine ESLint and Prettier in your development workflow. Best practices for configuration and resolving common conflicts.",
     category: "Development Tools",
     author: "Chris Wilson",
     date: "2024-03-15",
     readTime: "6 min",
     image: "/images/blog/eslint-prettier.jpg",
     tags: ["ESLint", "Prettier", "Code Quality"],
-  }
+  },
 ];
 
 const BlogPage = () => {

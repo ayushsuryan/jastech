@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Toaster } from 'react-hot-toast';
+import { Toaster } from "react-hot-toast";
 import AnnouncementBar from "./components/layout/AnnouncementBar";
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
@@ -35,7 +35,7 @@ const ServicesPage = React.lazy(() => import("./pages/ServicesPage"));
 const AboutPage = React.lazy(() => import("./pages/AboutPage"));
 const CaseStudiesPage = React.lazy(() => import("./pages/CaseStudiesPage"));
 const ContactPage = React.lazy(() => import("./pages/ContactPage"));
-const BlogPage = React.lazy(() => import("./pages/BlogPage"));
+// const BlogPage = React.lazy(() => import("./pages/BlogPage"));
 const CaseStudyDetail = React.lazy(() => import("./pages/CaseStudyDetail"));
 
 const App = () => {
@@ -48,37 +48,37 @@ const App = () => {
           toastOptions={{
             duration: 5000,
             style: {
-              borderRadius: '8px',
-              padding: '16px',
-              boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+              borderRadius: "8px",
+              padding: "16px",
+              boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
             },
             // Success toast style
             success: {
               style: {
-                background: '#10B981',
-                color: '#fff',
+                background: "#10B981",
+                color: "#fff",
               },
               iconTheme: {
-                primary: '#fff',
-                secondary: '#10B981',
+                primary: "#fff",
+                secondary: "#10B981",
               },
             },
             // Error toast style
             error: {
               style: {
-                background: '#EF4444',
-                color: '#fff',
+                background: "#EF4444",
+                color: "#fff",
               },
               iconTheme: {
-                primary: '#fff',
-                secondary: '#EF4444',
+                primary: "#fff",
+                secondary: "#EF4444",
               },
             },
             // Loading toast style
             loading: {
               style: {
-                background: '#3B82F6',
-                color: '#fff',
+                background: "#3B82F6",
+                color: "#fff",
               },
             },
           }}
@@ -98,11 +98,14 @@ const App = () => {
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/services" element={<ServicesPage />} />
-              <Route path="/success-stories/:slug" element={<CaseStudyDetail />} />
+              <Route
+                path="/success-stories/:slug"
+                element={<CaseStudyDetail />}
+              />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/success-stories" element={<CaseStudiesPage />} />
               <Route path="/contact" element={<ContactPage />} />
-              <Route path="/blog" element={<BlogPage />} />
+              {/* <Route path="/blog" element={<BlogPage />} /> */}
 
               {/* Catch all route for 404 */}
               <Route

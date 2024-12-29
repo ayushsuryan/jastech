@@ -1,4 +1,4 @@
-// components/home/BlogSection.jsx
+// components/home/BlogSection.jsx not being used
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { ClockIcon, UserIcon } from "@heroicons/react/24/outline";
