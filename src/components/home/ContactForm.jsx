@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import emailjs from '@emailjs/browser';
-import toast, { Toaster } from 'react-hot-toast';
+import emailjs from "@emailjs/browser";
+import toast, { Toaster } from "react-hot-toast";
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -20,8 +20,6 @@ const ContactForm = () => {
     // Initialize EmailJS with your public key
     emailjs.init("zBgX4x5MJaj_61zaB");
   }, []);
-
-
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -49,91 +47,91 @@ const ContactForm = () => {
     return newErrors;
   };
 
-    const handleSubmit = async (e) => {
-      e.preventDefault();
-      const newErrors = validateForm();
-  
-      if (Object.keys(newErrors).length === 0) {
-        setIsSubmitting(true);
-        
-        // Create a loading toast that we can dismiss later
-        const loadingToast = toast.loading('Sending your message...');
-        
-        try {
-          const result = await emailjs.send(
-            'service_m1nwtjy',
-            'template_hvc1fzj',
-            {
-              from_name: formData.name,
-              reply_to: formData.email,
-              phone_number: formData.phone || 'Not provided',
-              company: formData.company || 'Not provided',
-              message: formData.message,
-              to_name: 'JAS Tech Team',
-            }
-          );
-  
-          if (result.status === 200) {
-            // Dismiss loading toast and show success
-            toast.dismiss(loadingToast);
-            toast.success('Message sent successfully!', {
-              duration: 5000,
-              style: {
-                background: '#10B981',
-                color: '#fff',
-              },
-            });
-            
-            setFormData({
-              name: "",
-              email: "",
-              phone: "",
-              company: "",
-              service: "",
-              message: "",
-            });
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const newErrors = validateForm();
+
+    if (Object.keys(newErrors).length === 0) {
+      setIsSubmitting(true);
+
+      // Create a loading toast that we can dismiss later
+      const loadingToast = toast.loading("Sending your message...");
+
+      try {
+        const result = await emailjs.send(
+          "service_m1nwtjy",
+          "template_hvc1fzj",
+          {
+            from_name: formData.name,
+            reply_to: formData.email,
+            phone_number: formData.phone || "Not provided",
+            company: formData.company || "Not provided",
+            message: formData.message,
+            to_name: "JAS Tech Team",
           }
-        } catch (error) {
-          // Dismiss loading toast and show error
+        );
+
+        if (result.status === 200) {
+          // Dismiss loading toast and show success
           toast.dismiss(loadingToast);
-          toast.error('Failed to send message.', {
+          toast.success("Message sent successfully!", {
             duration: 5000,
             style: {
-              background: '#EF4444',
-              color: '#fff',
+              background: "#10B981",
+              color: "#fff",
             },
           });
-        } finally {
-          setIsSubmitting(false);
+
+          setFormData({
+            name: "",
+            email: "",
+            phone: "",
+            company: "",
+            service: "",
+            message: "",
+          });
         }
-      } else {
-        setErrors(newErrors);
-        toast.error('Please fill in all required fields correctly.', {
+      } catch (error) {
+        // Dismiss loading toast and show error
+        toast.dismiss(loadingToast);
+        toast.error("Failed to send message.", {
           duration: 5000,
           style: {
-            background: '#EF4444',
-            color: '#fff',
+            background: "#EF4444",
+            color: "#fff",
           },
         });
+      } finally {
+        setIsSubmitting(false);
       }
-    };
-  
+    } else {
+      setErrors(newErrors);
+      toast.error("Please fill in all required fields correctly.", {
+        duration: 5000,
+        style: {
+          background: "#EF4444",
+          color: "#fff",
+        },
+      });
+    }
+  };
+
   return (
     <section className=" bg-white">
-       <Toaster
+      <Toaster
         position="top-right"
         toastOptions={{
-          className: '',
+          className: "",
           duration: 5000,
           style: {
-            borderRadius: '8px',
-            padding: '16px',
-            boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+            borderRadius: "8px",
+            padding: "16px",
+            boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
           },
           loading: {
             style: {
-              background: '#3B82F6',
-              color: '#fff',
+              background: "#3B82F6",
+              color: "#fff",
             },
           },
         }}
@@ -165,7 +163,7 @@ const ContactForm = () => {
                   </svg>
                   <div>
                     <h3 className="font-semibold">Phone</h3>
-                    <p className="text-gray-600">+1 (555) 123-4567</p>
+                    <p className="text-gray-600">+91 7898119761</p>
                   </div>
                 </div>
 
@@ -209,7 +207,7 @@ const ContactForm = () => {
                     value={formData.name}
                     onChange={handleChange}
                     className={`mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 ${
-                      errors.name ? 'border-red-500' : ''
+                      errors.name ? "border-red-500" : ""
                     }`}
                   />
                   {errors.name && (
@@ -227,7 +225,7 @@ const ContactForm = () => {
                     value={formData.email}
                     onChange={handleChange}
                     className={`mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 ${
-                      errors.email ? 'border-red-500' : ''
+                      errors.email ? "border-red-500" : ""
                     }`}
                   />
                   {errors.email && (
@@ -271,11 +269,13 @@ const ContactForm = () => {
                     value={formData.message}
                     onChange={handleChange}
                     className={`mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 ${
-                      errors.message ? 'border-red-500' : ''
+                      errors.message ? "border-red-500" : ""
                     }`}
                   ></textarea>
                   {errors.message && (
-                    <p className="mt-1 text-sm text-red-500">{errors.message}</p>
+                    <p className="mt-1 text-sm text-red-500">
+                      {errors.message}
+                    </p>
                   )}
                 </div>
 
@@ -293,10 +293,10 @@ const ContactForm = () => {
                   type="submit"
                   disabled={isSubmitting}
                   className={`w-full bg-primary text-white py-4 px-4 rounded-md  transition-colors ${
-                    isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
+                    isSubmitting ? "opacity-50 cursor-not-allowed" : ""
                   }`}
                 >
-                  {isSubmitting ? 'Sending...' : 'Send Message'}
+                  {isSubmitting ? "Sending..." : "Send Message"}
                 </button>
               </form>
             </div>
