@@ -74,7 +74,7 @@ const Footer = () => {
           {/* Company Info */}
           <div className="lg:col-span-2">
             <img
-              src="/src/assets/logo-inverse.png"
+              src="/logo-inverse.png"
               alt="JAS Technologies"
               className="h-8 mb-4"
             />

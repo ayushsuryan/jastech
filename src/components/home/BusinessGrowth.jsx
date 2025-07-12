@@ -34,7 +34,7 @@ const BusinessGrowth = () => {
           </div>
           <div className="order-first lg:order-last">
             <img
-              src="/src/assets/images/1.jpg"
+              src="/1.jpg"
               alt="Business Growth"
               className="w-full rounded-lg shadow-lg"
             />

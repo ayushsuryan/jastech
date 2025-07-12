@@ -25,7 +25,7 @@ const Header = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center">
             <img
-              src="/src/assets/logo.png"
+              src="/logo.png"
               alt="JAS Technologies"
               className="h-12 transition-transform duration-300 hover:scale-105"
             />
