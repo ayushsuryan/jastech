@@ -2,12 +2,12 @@ import React from "react";
 
 const TopBrands = () => {
   const brands = [
-    { name: "Brand 1", logo: "/brand1.svg" },
-    { name: "Brand 2", logo: "/brand2.svg" },
-    { name: "Brand 3", logo: "/brand3.svg" },
-    { name: "Brand 4", logo: "/brand4.svg" },
-    { name: "Brand 5", logo: "/brand6.svg" },
-    { name: "Brand 6", logo: "/brand5.svg" },
+    { name: "Tech Innovators Inc.", logo: "/brand1.svg" },
+    { name: "Global Solutions Ltd.", logo: "/brand2.svg" },
+    { name: "Digital Transformation Co.", logo: "/brand3.svg" },
+    { name: "Enterprise Systems Corp.", logo: "/brand4.svg" },
+    { name: "Cloud Integration Partners", logo: "/brand6.svg" },
+    { name: "AI & ML Specialists", logo: "/brand5.svg" },
   ];
 
   return (

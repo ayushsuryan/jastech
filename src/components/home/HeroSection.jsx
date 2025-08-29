@@ -8,11 +8,10 @@ const HeroSection = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              Innovative IT Solutions for Your Business Growth
+              Expert IT Development & Custom Software Solutions for Business Growth
             </h1>
             <p className="text-xl  mb-8">
-              We help businesses leverage cutting-edge technology to transform
-              their operations and achieve remarkable results.
+              At Jas Technologies, we specialize in delivering tailored IT development services, including web, mobile, and enterprise software, to drive your digital success.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
@@ -46,6 +45,7 @@ const HeroSection = () => {
               </div>
             </div>
           </div>
+      
         </div>
       </div>
     </section>
