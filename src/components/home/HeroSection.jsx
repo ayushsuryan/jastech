@@ -1,17 +1,33 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./HeroSection.css"; // <- we’ll put animation styles here
 
 const HeroSection = () => {
   return (
-    <section className="bg-primary text-white">
-      <div className="container mx-auto px-4 py-20">
+    <section className="relative bg-primary text-white overflow-hidden">
+      {/* Animated Background Layer */}
+      <div className="background">
+        <span className="ball"></span>
+        <span className="ball"></span>
+        <span className="ball"></span>
+        <span className="ball"></span>
+        <span className="ball"></span>
+        <span className="ball"></span>
+        <span className="ball"></span>
+        <span className="ball"></span>
+      </div>
+
+      {/* Content */}
+      <div className="container mx-auto px-4 py-20 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               Expert IT Development & Custom Software Solutions for Business Growth
             </h1>
-            <p className="text-xl  mb-8">
-              At Jas Technologies, we specialize in delivering tailored IT development services, including web, mobile, and enterprise software, to drive your digital success.
+            <p className="text-xl mb-8">
+              At Jas Technologies, we specialize in delivering tailored IT
+              development services, including web, mobile, and enterprise
+              software, to drive your digital success.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
@@ -45,7 +61,6 @@ const HeroSection = () => {
               </div>
             </div>
           </div>
-      
         </div>
       </div>
     </section>

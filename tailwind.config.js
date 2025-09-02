@@ -9,8 +9,8 @@ export default {
     extend: {
       colors: {
         primary: {
-          DEFAULT: "#133239",
-          light: "#27bbed",
+          DEFAULT: "#0527ff",
+          gradient: "linear-gradient(to right, #0527ff, #27bbed)",
         },
         secondary: {
           DEFAULT: "#03b7ed",
@@ -21,16 +21,16 @@ export default {
         },
       },
       fontFamily: {
-        "sora": ["Sora", "sans-serif"],
-        "inter": ["Inter", "sans-serif"],
-        "manrope": ["Manrope", "sans-serif"],
+        sora: ["Sora", "sans-serif"],
+        inter: ["Inter", "sans-serif"],
+        manrope: ["Manrope", "sans-serif"],
       },
       fontSize: {
         "heading-lg": ["48px", { lineHeight: "1.2" }],
         "heading-md": ["36px", { lineHeight: "1.2" }],
       },
       spacing: {
-        "section": "100px",
+        section: "100px",
       },
       container: {
         center: true,
@@ -43,10 +43,10 @@ export default {
         },
       },
       borderRadius: {
-        "custom": "100px",
+        custom: "100px",
       },
       boxShadow: {
-        "custom": "0 4px 6px rgba(0, 0, 0, 0.1)",
+        custom: "0 4px 6px rgba(0, 0, 0, 0.1)",
       },
     },
   },
