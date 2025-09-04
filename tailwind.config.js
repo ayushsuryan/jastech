@@ -10,6 +10,7 @@ export default {
       colors: {
         primary: {
           DEFAULT: "#0527ff",
+          light: "#3d5cff",
           gradient: "linear-gradient(to right, #0527ff, #27bbed)",
         },
         secondary: {
