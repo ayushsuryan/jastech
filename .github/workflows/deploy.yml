@@ -1,0 +1,63 @@
+name: Deploy to VPS
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        
+    - name: Install frontend dependencies
+      run: npm install
+      
+    - name: Build frontend
+      run: npm run build
+      
+    - name: Install backend dependencies
+      run: |
+        cd backend
+        npm install
+        
+    - name: Create deployment package
+      run: |
+        mkdir -p deployment
+        cp -r dist deployment/frontend
+        cp -r backend deployment/backend
+        cp package.json deployment/
+        cp -r public deployment/
+        
+    - name: Deploy to VPS
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.VPS_HOST }}
+        username: ${{ secrets.VPS_USERNAME }}
+        key: ${{ secrets.VPS_SSH_KEY }}
+        script: |
+          cd /var/www/jas-technologies
+          git pull origin main
+          
+          # Install frontend dependencies and build
+          npm install
+          npm run build
+          
+          # Install backend dependencies
+          cd backend
+          npm install
+          
+          # Restart services
+          sudo systemctl restart jas-frontend
+          sudo systemctl restart jas-backend
+          sudo systemctl reload nginx
