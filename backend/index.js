@@ -25,12 +25,11 @@ const allowedOrigins = [
   'http://127.0.0.1:4173',
   'https://jas-technologies.in',
   'https://www.jas-technologies.in',
-  'https://api.jas-technologies.in'
+  'https://api.jas-technologies.in','*'
 ];
 
 const corsOptions = {
   origin: function (origin, callback) {
-    // Allow requests with no origin (like mobile apps or curl requests)
     if (!origin) return callback(null, true);
     
     console.log('CORS request from origin:', origin);
