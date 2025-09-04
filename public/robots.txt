@@ -4,9 +4,6 @@ Allow: /
 # Sitemap
 Sitemap: https://www.jas-technologies.in/sitemap.xml
 
-# Crawl-delay
-Crawl-delay: 1
-
 # Allow all search engines
 User-agent: Googlebot
 Allow: /
