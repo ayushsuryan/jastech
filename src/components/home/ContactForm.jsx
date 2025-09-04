@@ -1,6 +1,13 @@
-import React, { useState, useEffect } from "react";
-import emailjs from "@emailjs/browser";
+import React, { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
+import { 
+  CheckCircleIcon, 
+  ExclamationTriangleIcon, 
+  XCircleIcon, 
+  ClockIcon,
+  WifiIcon,
+  DocumentTextIcon
+} from "@heroicons/react/24/outline";
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -16,10 +23,8 @@ const ContactForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
 
-  useEffect(() => {
-    // Initialize EmailJS with your public key
-    emailjs.init("zBgX4x5MJaj_61zaB");
-  }, []);
+  // API base URL - you can move this to environment variables later
+  const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -54,34 +59,42 @@ const ContactForm = () => {
     if (Object.keys(newErrors).length === 0) {
       setIsSubmitting(true);
 
-      // Create a loading toast that we can dismiss later
-      const loadingToast = toast.loading("Sending your message...");
+      // Create a loading toast with custom styling
+      const loadingToast = toast.loading("Sending your message...", {
+        duration: Infinity, // Keep loading until dismissed
+        style: {
+          background: "#3B82F6",
+          color: "#fff",
+          fontWeight: "500",
+        },
+        icon: <ClockIcon className="w-5 h-5" />,
+      });
 
       try {
-        const result = await emailjs.send(
-          "service_m1nwtjy",
-          "template_hvc1fzj",
-          {
-            from_name: formData.name,
-            reply_to: formData.email,
-            phone_number: formData.phone || "Not provided",
-            company: formData.company || "Not provided",
-            message: formData.message,
-            to_name: "JAS Tech Team",
-          }
-        );
+        const response = await fetch(`${API_BASE_URL}/api/contacts`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        });
 
-        if (result.status === 200) {
+        const result = await response.json();
+
+        if (response.ok && result.success) {
           // Dismiss loading toast and show success
           toast.dismiss(loadingToast);
-          toast.success("Message sent successfully!", {
-            duration: 5000,
+          toast.success("Message sent successfully! We'll get back to you soon.", {
+            duration: 6000,
             style: {
               background: "#10B981",
               color: "#fff",
+              fontWeight: "500",
             },
+            icon: <CheckCircleIcon className="w-5 h-5" />,
           });
 
+          // Reset form
           setFormData({
             name: "",
             email: "",
@@ -90,16 +103,32 @@ const ContactForm = () => {
             service: "",
             message: "",
           });
+          setSubmitSuccess(true);
+        } else {
+          // Dismiss loading toast and show error
+          toast.dismiss(loadingToast);
+          toast.error(result.message || "Failed to send message. Please try again.", {
+            duration: 7000,
+            style: {
+              background: "#EF4444",
+              color: "#fff",
+              fontWeight: "500",
+            },
+            icon: <XCircleIcon className="w-5 h-5" />,
+          });
         }
       } catch (error) {
         // Dismiss loading toast and show error
         toast.dismiss(loadingToast);
-        toast.error("Failed to send message.", {
-          duration: 5000,
+        console.error('Error submitting form:', error);
+        toast.error("Failed to send message. Please check your connection and try again.", {
+          duration: 7000,
           style: {
             background: "#EF4444",
             color: "#fff",
+            fontWeight: "500",
           },
+          icon: <WifiIcon className="w-5 h-5" />,
         });
       } finally {
         setIsSubmitting(false);
@@ -109,9 +138,11 @@ const ContactForm = () => {
       toast.error("Please fill in all required fields correctly.", {
         duration: 5000,
         style: {
-          background: "#EF4444",
+          background: "#F59E0B",
           color: "#fff",
+          fontWeight: "500",
         },
+        icon: <DocumentTextIcon className="w-5 h-5" />,
       });
     }
   };
@@ -120,18 +151,53 @@ const ContactForm = () => {
     <section className=" bg-white">
       <Toaster
         position="top-right"
+        reverseOrder={false}
+        gutter={8}
+        containerClassName=""
+        containerStyle={{}}
         toastOptions={{
           className: "",
           duration: 5000,
           style: {
-            borderRadius: "8px",
-            padding: "16px",
-            boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+            borderRadius: "12px",
+            padding: "16px 20px",
+            boxShadow: "0 10px 25px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05)",
+            border: "1px solid rgba(255, 255, 255, 0.1)",
+            fontSize: "14px",
+            fontWeight: "500",
+            maxWidth: "400px",
+          },
+          success: {
+            duration: 6000,
+            style: {
+              background: "#10B981",
+              color: "#fff",
+            },
+            iconTheme: {
+              primary: "#fff",
+              secondary: "#10B981",
+            },
+          },
+          error: {
+            duration: 7000,
+            style: {
+              background: "#EF4444",
+              color: "#fff",
+            },
+            iconTheme: {
+              primary: "#fff",
+              secondary: "#EF4444",
+            },
           },
           loading: {
+            duration: Infinity,
             style: {
               background: "#3B82F6",
               color: "#fff",
+            },
+            iconTheme: {
+              primary: "#fff",
+              secondary: "#3B82F6",
             },
           },
         }}
