@@ -47,15 +47,16 @@ jobs:
         key: ${{ secrets.VPS_SSH_KEY }}
         script: |
           cd /var/www/jas-technologies
-          git pull origin main
+          sudo -u deploy git pull origin main
           
           # Install frontend dependencies and build
-          npm install
-          npm run build
+          sudo -u deploy npm install
+          sudo -u deploy npm run build
           
           # Install backend dependencies
           cd backend
-          npm install
+          sudo -u deploy npm install
+          cd ..
           
           # Restart services
           sudo systemctl restart jas-frontend

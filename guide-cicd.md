@@ -153,15 +153,24 @@ sudo crontab -e
 ### Step 1: Generate SSH Key for Deployment
 
 ```bash
-# On your VPS, generate SSH key
-ssh-keygen -t rsa -b 4096 -C "github-actions@jas-technologies.in"
-# Save as: /home/deploy/.ssh/github_actions
+# Create deploy user if it doesn't exist
+sudo adduser deploy
+sudo usermod -aG sudo deploy
+
+# Create SSH directory for deploy user
+sudo mkdir -p /home/deploy/.ssh
+sudo chown -R deploy:deploy /home/deploy/.ssh
+sudo chmod 700 /home/deploy/.ssh
+
+# Generate SSH key for deploy user
+sudo -u deploy ssh-keygen -t rsa -b 4096 -C "suryanayush@gmail.com" -f /home/deploy/.ssh/github_actions
 
 # Add public key to authorized_keys
-cat ~/.ssh/github_actions.pub >> ~/.ssh/authorized_keys
+sudo -u deploy cat /home/deploy/.ssh/github_actions.pub >> /home/deploy/.ssh/authorized_keys
+sudo chmod 600 /home/deploy/.ssh/authorized_keys
 
-# Copy private key content
-cat ~/.ssh/github_actions
+# Get the private key for GitHub secrets
+sudo -u deploy cat /home/deploy/.ssh/github_actions
 ```
 
 ### Step 2: Configure GitHub Secrets
