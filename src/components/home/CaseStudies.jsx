@@ -65,14 +65,23 @@ const CaseStudies = () => {
               className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow"
             >
               <div className="aspect-w-16 aspect-h-9">
-                <img
-                  src={study.image}
-                  alt={study.title}
-                  className="w-full h-full object-cover"
-                  loading="lazy"
-                  decoding="async"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                />
+                <picture>
+                  <source 
+                    srcSet={study.image.replace('.png', '.webp')} 
+                    type="image/webp"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  />
+                  <img
+                    src={study.image}
+                    alt={study.title}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                    decoding="async"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    width="400"
+                    height="225"
+                  />
+                </picture>
               </div>
               <div className="p-6">
                 <div className="text-sm text-blue-600 font-medium mb-2">

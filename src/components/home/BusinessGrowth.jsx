@@ -33,14 +33,23 @@ const BusinessGrowth = () => {
             </div>
           </div>
           <div className="order-first lg:order-last">
-            <img
-              src="/1.jpg"
-              alt="Business Growth"
-              className="w-full rounded-lg shadow-lg"
-              loading="lazy"
-              decoding="async"
-              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-            />
+            <picture>
+              <source 
+                srcSet="/1.webp" 
+                type="image/webp"
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              />
+              <img
+                src="/1.jpg"
+                alt="Business Growth"
+                className="w-full rounded-lg shadow-lg"
+                loading="lazy"
+                decoding="async"
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                width="400"
+                height="267"
+              />
+            </picture>
           </div>
         </div>
       </div>
