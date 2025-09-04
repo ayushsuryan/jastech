@@ -39,7 +39,10 @@ jobs:
         key: ${{ secrets.VPS_SSH_KEY }}
         script: |
           cd /var/www/jas-technologies
-          sudo -u deploy git pull origin main
+          
+          # Handle git conflicts by resetting to remote
+          sudo -u deploy git fetch origin
+          sudo -u deploy git reset --hard origin/main
           
           # Install frontend dependencies and build
           sudo -u deploy npm install
