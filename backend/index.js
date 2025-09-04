@@ -1,6 +1,14 @@
 const express = require('express');
 const cors = require('cors');
-require('dotenv').config();
+const path = require('path');
+
+// Load environment variables based on NODE_ENV
+if (process.env.NODE_ENV === 'production') {
+  require('dotenv').config({ path: path.join(__dirname, '../env.production') });
+} else {
+  require('dotenv').config({ path: path.join(__dirname, '../env.development') });
+}
+
 const connectDB = require('./config/database');
 const contactRoutes = require('./routes/contactRoutes');
 const app = express();
@@ -12,6 +20,9 @@ const allowedOrigins = [
   'http://localhost:3000',
   'http://localhost:5173',
   'http://localhost:4173',
+  'http://127.0.0.1:3000',
+  'http://127.0.0.1:5173',
+  'http://127.0.0.1:4173',
   'https://jas-technologies.in',
   'https://www.jas-technologies.in',
   'https://api.jas-technologies.in'
@@ -19,17 +30,24 @@ const allowedOrigins = [
 
 const corsOptions = {
   origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps or curl requests)
     if (!origin) return callback(null, true);
+    
+    console.log('CORS request from origin:', origin);
+    
     if (allowedOrigins.indexOf(origin) !== -1) {
+      console.log('CORS: Origin allowed');
       callback(null, true);
     } else {
-      console.log('CORS blocked origin:', origin);
+      console.log('CORS: Origin blocked:', origin);
+      console.log('CORS: Allowed origins:', allowedOrigins);
       callback(new Error('Not allowed by CORS'));
     }
   },
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept'],
+  optionsSuccessStatus: 200
 };
 
 app.use(cors(corsOptions));

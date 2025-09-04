@@ -23,7 +23,6 @@ const ContactForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
 
-  // API base URL - you can move this to environment variables later
   const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
 
   const handleChange = (e) => {
