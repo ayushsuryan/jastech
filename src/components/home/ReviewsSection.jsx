@@ -220,6 +220,7 @@ const ReviewsSection = () => {
               className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-8
                        bg-white p-3 rounded-full shadow-lg hover:bg-gray-50 transition-all
                        focus:outline-none focus:ring-2 focus:ring-blue-500 z-10"
+              aria-label="Previous reviews"
             >
               <ChevronLeftIcon className="h-6 w-6 text-gray-600" />
             </button>
@@ -231,6 +232,7 @@ const ReviewsSection = () => {
               className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-8
                        bg-white p-3 rounded-full shadow-lg hover:bg-gray-50 transition-all
                        focus:outline-none focus:ring-2 focus:ring-blue-500 z-10"
+              aria-label="Next reviews"
             >
               <ChevronRightIcon className="h-6 w-6 text-gray-600" />
             </button>
@@ -244,11 +246,15 @@ const ReviewsSection = () => {
               <button
                 key={idx}
                 onClick={() => setCurrentIndex(idx)}
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                  idx === currentIndex ? "bg-blue-600 w-4" : "bg-gray-300"
+                className={`w-8 h-8 rounded-full transition-all duration-300 flex items-center justify-center ${
+                  idx === currentIndex ? "bg-blue-600" : "bg-gray-300"
                 }`}
                 aria-label={`Go to slide ${idx + 1}`}
-              />
+              >
+                <div className={`w-2 h-2 rounded-full ${
+                  idx === currentIndex ? "bg-white" : "bg-gray-600"
+                }`} />
+              </button>
             )
           )}
         </div>

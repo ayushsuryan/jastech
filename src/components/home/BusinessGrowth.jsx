@@ -37,6 +37,9 @@ const BusinessGrowth = () => {
               src="/1.jpg"
               alt="Business Growth"
               className="w-full rounded-lg shadow-lg"
+              loading="lazy"
+              decoding="async"
+              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
             />
           </div>
         </div>
