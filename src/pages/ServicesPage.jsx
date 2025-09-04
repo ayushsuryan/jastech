@@ -113,32 +113,44 @@ const ServicesPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="py-20 bg-primary">
-        <div className="container mx-auto px-4">
-          <h1 className="text-4xl font-bold text-white mb-4">Our Services</h1>
-          <p className="text-xl text-blue-100">
-            Enterprise IT solutions powered by cutting-edge technology
-          </p>
+    <div className="min-h-screen bg-background-light">
+      {/* Hero Section */}
+      <div className="relative bg-primary text-white overflow-hidden">
+        {/* Animated Background Elements */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-10 left-10 w-20 h-20 bg-white rounded-full animate-pulse"></div>
+          <div className="absolute top-32 right-20 w-16 h-16 bg-white rounded-full animate-pulse delay-1000"></div>
+          <div className="absolute bottom-20 left-1/4 w-12 h-12 bg-white rounded-full animate-pulse delay-2000"></div>
+        </div>
+        
+        <div className="container mx-auto px-4 py-12 md:py-20 relative z-10">
+          <div className="text-center max-w-4xl mx-auto">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 md:mb-6 font-sora">
+              Our Services
+            </h1>
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-blue-100 mb-6 md:mb-8 font-inter leading-relaxed px-2">
+              Enterprise IT solutions powered by cutting-edge technology
+            </p>
+          </div>
         </div>
       </div>
 
-      <div className="container mx-auto px-4 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="container mx-auto px-4 py-8 md:py-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {services.map((service, index) => (
             <div
               key={index}
-              className="bg-white rounded-lg shadow-lg p-8 hover:shadow-xl transition-shadow duration-300"
+              className="bg-white rounded-lg shadow-lg p-6 md:p-8 hover:shadow-xl transition-shadow duration-300"
             >
-              <h3 className="text-2xl font-bold mb-4 text-primary">
+              <h3 className="text-xl md:text-2xl font-bold mb-4 text-primary font-sora">
                 {service.title}
               </h3>
-              <p className="text-gray-600 mb-6">{service.description}</p>
-              <ul className="space-y-3">
+              <p className="text-sm md:text-base text-gray-600 mb-6 font-inter leading-relaxed">{service.description}</p>
+              <ul className="space-y-2 md:space-y-3">
                 {service.features.map((feature, idx) => (
-                  <li key={idx} className="flex items-center text-gray-700">
+                  <li key={idx} className="flex items-start text-gray-700">
                     <svg
-                      className="w-5 h-5 text-green-500 mr-3 flex-shrink-0"
+                      className="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -150,7 +162,7 @@ const ServicesPage = () => {
                         d="M5 13l4 4L19 7"
                       />
                     </svg>
-                    {feature}
+                    <span className="text-sm md:text-base font-inter">{feature}</span>
                   </li>
                 ))}
               </ul>

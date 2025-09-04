@@ -1,2 +1,28 @@
 User-agent: *
-Allow: / 
+Allow: /
+
+# Sitemap
+Sitemap: https://www.jas-technologies.in/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 1
+
+# Allow all search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+# Block bad bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: / 

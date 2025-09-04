@@ -111,16 +111,16 @@ const App = () => {
               <Route
                 path="*"
                 element={
-                  <div className="flex flex-col items-center justify-center min-h-screen">
-                    <h1 className="text-4xl font-bold mb-4">
+                  <div className="flex flex-col items-center justify-center min-h-screen bg-background-light px-4">
+                    <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 font-sora">
                       404 - Page Not Found
                     </h1>
-                    <p className="text-gray-600 mb-8">
+                    <p className="text-sm md:text-base lg:text-lg text-gray-600 mb-6 md:mb-8 text-center font-inter leading-relaxed">
                       The page you're looking for doesn't exist.
                     </p>
                     <a
                       href="/"
-                      className="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-secondary transition-colors"
+                      className="bg-primary text-white px-6 md:px-8 py-3 md:py-4 rounded-lg text-sm md:text-base font-semibold hover:bg-secondary transition-colors duration-300 font-sora"
                     >
                       Return Home
                     </a>

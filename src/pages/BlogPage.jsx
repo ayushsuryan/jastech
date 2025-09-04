@@ -1,4 +1,3 @@
-// blog page and sections are not being used
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
@@ -102,20 +101,31 @@ const BlogPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-background-light">
       {/* Hero Section */}
-      <div className="bg-primary py-20">
-        <div className="container mx-auto px-4">
-          <h1 className="text-4xl font-bold text-white mb-4">Our Blog</h1>
-          <p className="text-xl text-blue-100">
-            Insights and updates from our team of experts
-          </p>
+      <div className="relative bg-primary text-white overflow-hidden">
+        {/* Animated Background Elements */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-10 left-10 w-20 h-20 bg-white rounded-full animate-pulse"></div>
+          <div className="absolute top-32 right-20 w-16 h-16 bg-white rounded-full animate-pulse delay-1000"></div>
+          <div className="absolute bottom-20 left-1/4 w-12 h-12 bg-white rounded-full animate-pulse delay-2000"></div>
+        </div>
+        
+        <div className="container mx-auto px-4 py-12 md:py-20 relative z-10">
+          <div className="text-center max-w-4xl mx-auto">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 md:mb-6 font-sora">
+              Our Blog
+            </h1>
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-blue-100 mb-6 md:mb-8 font-inter leading-relaxed px-2">
+              Insights and updates from our team of experts
+            </p>
+          </div>
         </div>
       </div>
 
       {/* Search and Filter Section */}
-      <div className="container mx-auto px-4 py-8">
-        <div className="flex flex-col md:flex-row gap-4 mb-8">
+      <div className="container mx-auto px-4 py-8 md:py-16">
+        <div className="flex flex-col sm:flex-row gap-4 md:gap-6 mb-8 md:mb-12">
           {/* Search Input */}
           <div className="relative flex-1">
             <input
@@ -123,18 +133,18 @@ const BlogPage = () => {
               placeholder="Search articles..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full pl-10 pr-4 py-3 md:py-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-sm md:text-base"
             />
             <MagnifyingGlassIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
           </div>
 
           {/* Category Filter */}
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-2 md:gap-3">
             {categories.map((category) => (
               <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors
+                className={`px-3 md:px-4 py-2 md:py-3 rounded-full text-xs md:text-sm font-medium transition-colors
                   ${
                     selectedCategory === category
                       ? "bg-primary text-white"
@@ -148,40 +158,40 @@ const BlogPage = () => {
         </div>
 
         {/* Blog Posts Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {currentPosts.map((post) => (
             <article
               key={post.id}
-              className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow"
+              className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300"
             >
               {/* Post Image */}
               <Link to={`/blog/${post.id}`}>
                 <img
                   src={post.image}
                   alt={post.title}
-                  className="w-full h-48 object-cover"
+                  className="w-full h-48 md:h-56 object-cover"
                 />
               </Link>
 
               {/* Post Content */}
-              <div className="p-6">
+              <div className="p-4 md:p-6">
                 {/* Category */}
-                <span className="text-sm text-blue-600 font-medium">
+                <span className="text-xs md:text-sm text-primary font-medium">
                   {post.category}
                 </span>
 
                 {/* Title */}
                 <Link to={`/blog/${post.id}`}>
-                  <h2 className="text-xl font-bold mt-2 mb-3 hover:text-blue-600 transition-colors">
+                  <h2 className="text-lg md:text-xl font-bold mt-2 mb-3 hover:text-primary transition-colors font-sora">
                     {post.title}
                   </h2>
                 </Link>
 
                 {/* Excerpt */}
-                <p className="text-gray-600 mb-4">{post.excerpt}</p>
+                <p className="text-sm md:text-base text-gray-600 mb-4 font-inter leading-relaxed">{post.excerpt}</p>
 
                 {/* Tags */}
-                <div className="flex flex-wrap gap-2 mb-4">
+                <div className="flex flex-wrap gap-1 md:gap-2 mb-4">
                   {post.tags.map((tag, index) => (
                     <span
                       key={index}
@@ -193,18 +203,20 @@ const BlogPage = () => {
                 </div>
 
                 {/* Meta Information */}
-                <div className="flex items-center justify-between text-sm text-gray-500">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between text-xs md:text-sm text-gray-500 gap-2">
                   <div className="flex items-center">
                     <UserIcon className="h-4 w-4 mr-1" />
                     <span>{post.author}</span>
                   </div>
-                  <div className="flex items-center">
-                    <CalendarIcon className="h-4 w-4 mr-1" />
-                    <span>{formatDate(post.date)}</span>
-                  </div>
-                  <div className="flex items-center">
-                    <ClockIcon className="h-4 w-4 mr-1" />
-                    <span>{post.readTime} read</span>
+                  <div className="flex items-center gap-4">
+                    <div className="flex items-center">
+                      <CalendarIcon className="h-4 w-4 mr-1" />
+                      <span>{formatDate(post.date)}</span>
+                    </div>
+                    <div className="flex items-center">
+                      <ClockIcon className="h-4 w-4 mr-1" />
+                      <span>{post.readTime} read</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -218,7 +230,7 @@ const BlogPage = () => {
             <button
               onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
               disabled={currentPage === 1}
-              className="px-4 py-2 border rounded-md hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="px-3 md:px-4 py-2 md:py-3 border rounded-md hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed text-sm md:text-base"
             >
               Previous
             </button>
@@ -226,8 +238,8 @@ const BlogPage = () => {
               <button
                 key={index + 1}
                 onClick={() => setCurrentPage(index + 1)}
-                className={`px-4 py-2 border rounded-md hover:bg-gray-100
-                  ${currentPage === index + 1 ? "bg-primar text-white" : ""}`}
+                className={`px-3 md:px-4 py-2 md:py-3 border rounded-md hover:bg-gray-100 text-sm md:text-base
+                  ${currentPage === index + 1 ? "bg-primary text-white" : ""}`}
               >
                 {index + 1}
               </button>
@@ -237,7 +249,7 @@ const BlogPage = () => {
                 setCurrentPage((prev) => Math.min(prev + 1, totalPages))
               }
               disabled={currentPage === totalPages}
-              className="px-4 py-2 border rounded-md hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="px-3 md:px-4 py-2 md:py-3 border rounded-md hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed text-sm md:text-base"
             >
               Next
             </button>
