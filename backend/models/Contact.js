@@ -35,7 +35,7 @@ const contactSchema = new mongoose.Schema({
 });
 
 // Index for better query performance
-contactSchema.index({ email: 1 });
+// Note: email already has unique: true which creates an index
 contactSchema.index({ createdAt: -1 });
 
 module.exports = mongoose.model('Contact', contactSchema);
