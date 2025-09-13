@@ -209,7 +209,7 @@ const ContactForm = () => {
                       href="mailto:contact@jastechnologies.com"
                       className="text-gray-600"
                     >
-                      contact@jastechnologies.com
+                      contact@jastechnologies.com test
                     </a>
                   </div>
                 </div>

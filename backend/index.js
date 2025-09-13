@@ -25,7 +25,7 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 // Health check route
 app.get('/status', (req, res) => {
   res.json({
-    status: 'running',
+    status: 'running 1',
     timestamp: new Date().toISOString(),
     environment: process.env.NODE_ENV || 'development',
     version: '1.0.0'
