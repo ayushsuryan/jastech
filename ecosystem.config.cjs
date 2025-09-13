@@ -8,11 +8,13 @@ module.exports = {
       exec_mode: 'fork',
       env: {
         NODE_ENV: 'production',
-        PORT: 3000
+        PORT: 3000,
+        MONGODB_URI: 'mongodb+srv://ayush:Mongo7440@cluster0.6rwkptj.mongodb.net/jastech_contacts'
       },
       env_production: {
         NODE_ENV: 'production',
-        PORT: 3000
+        PORT: 3000,
+        MONGODB_URI: 'mongodb+srv://ayush:Mongo7440@cluster0.6rwkptj.mongodb.net/jastech_contacts'
       },
       error_file: '/home/deploy/.pm2/logs/backend-error.log',
       out_file: '/home/deploy/.pm2/logs/backend-out.log',
