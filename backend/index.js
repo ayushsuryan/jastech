@@ -25,7 +25,7 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 // Health check route
 app.get('/status', (req, res) => {
   res.json({
-    status: 'running 1',
+    status: 'running 1 adasjdsajd',
     timestamp: new Date().toISOString(),
     environment: process.env.NODE_ENV || 'development',
     version: '1.0.0'
@@ -43,6 +43,6 @@ app.use((err, req, res, next) => {
 
 // Start server
 app.listen(port, () => {
-  console.log(`🚀 Server listening on http://localhost:${port}`);
+  console.log(`🚀 Server listening : on http://localhost:${port}`);
   console.log(`🌐 CORS enabled for all origins`);
 });
