@@ -1,0 +1,26 @@
+# Frontend Environment Variables Example
+# Copy this file to .env.local for development or .env for production
+
+# API Configuration
+VITE_API_URL=https://api.jas-technologies.in
+
+# Development API URL (uncomment for local development)
+VITE_API_URL=http://localhost:3000
+
+# Application Environment
+NODE_ENV=production
+
+# Development Environment (uncomment for local development)
+# NODE_ENV=development
+
+# Optional: Analytics and Tracking
+# VITE_GOOGLE_ANALYTICS_ID=your_ga_id
+# VITE_GOOGLE_TAG_MANAGER_ID=your_gtm_id
+
+# Optional: Feature Flags
+# VITE_ENABLE_ANALYTICS=true
+# VITE_ENABLE_DEBUG_MODE=false
+
+# Optional: Third-party Services
+# VITE_RECAPTCHA_SITE_KEY=your_recaptcha_key
+# VITE_SENTRY_DSN=your_sentry_dsn

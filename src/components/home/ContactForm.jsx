@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import toast, { Toaster } from "react-hot-toast";
+import React, { useState, useRef } from "react";
+import toast from "react-hot-toast";
 import { 
   CheckCircleIcon, 
   ExclamationTriangleIcon, 
@@ -22,6 +22,7 @@ const ContactForm = () => {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
+  const submitRef = useRef(false);
 
   const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://api.jas-technologies.in';
 
@@ -53,9 +54,16 @@ const ContactForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    // Prevent multiple submissions
+    if (submitRef.current || isSubmitting) {
+      return;
+    }
+    
     const newErrors = validateForm();
 
     if (Object.keys(newErrors).length === 0) {
+      submitRef.current = true;
       setIsSubmitting(true);
 
       // Create a loading toast with custom styling
@@ -70,6 +78,7 @@ const ContactForm = () => {
       });
 
       try {
+        console.log('Submitting contact form to:', `${API_BASE_URL}/api/contacts`);
         const response = await fetch(`${API_BASE_URL}/api/contacts`, {
           method: 'POST',
           headers: {
@@ -131,6 +140,7 @@ const ContactForm = () => {
         });
       } finally {
         setIsSubmitting(false);
+        submitRef.current = false;
       }
     } else {
       setErrors(newErrors);
@@ -148,59 +158,6 @@ const ContactForm = () => {
 
   return (
     <section className=" bg-white">
-      <Toaster
-        position="top-right"
-        reverseOrder={false}
-        gutter={8}
-        containerClassName=""
-        containerStyle={{}}
-        toastOptions={{
-          className: "",
-          duration: 5000,
-          style: {
-            borderRadius: "12px",
-            padding: "16px 20px",
-            boxShadow: "0 10px 25px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05)",
-            border: "1px solid rgba(255, 255, 255, 0.1)",
-            fontSize: "14px",
-            fontWeight: "500",
-            maxWidth: "400px",
-          },
-          success: {
-            duration: 6000,
-            style: {
-              background: "#10B981",
-              color: "#fff",
-            },
-            iconTheme: {
-              primary: "#fff",
-              secondary: "#10B981",
-            },
-          },
-          error: {
-            duration: 7000,
-            style: {
-              background: "#EF4444",
-              color: "#fff",
-            },
-            iconTheme: {
-              primary: "#fff",
-              secondary: "#EF4444",
-            },
-          },
-          loading: {
-            duration: Infinity,
-            style: {
-              background: "#3B82F6",
-              color: "#fff",
-            },
-            iconTheme: {
-              primary: "#fff",
-              secondary: "#3B82F6",
-            },
-          },
-        }}
-      />
       <div className="container mx-auto px-4">
         <div className="container mx-auto px-4 py-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
