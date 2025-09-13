@@ -12,8 +12,9 @@ connectDB();
 const allowedOrigins = [
   'https://jas-technologies.in',
   'https://www.jas-technologies.in',
-  'https://api.jas-technologies.in','*'
-];
+  'https://api.jas-technologies.in',
+  process.env.CORS_ORIGIN
+].filter(Boolean); // Remove undefined values
 
 const corsOptions = {
   origin: function (origin, callback) {
